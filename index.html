@@ -17,7 +17,6 @@
             align-items: center; 
             height: 100vh; 
             overflow: hidden;
-            perspective: 1000px;
         }
         canvas {
             position: absolute;
@@ -35,26 +34,23 @@
             border: 1px solid rgba(255, 255, 255, 0.15);
             padding: 40px 30px; 
             border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.1); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
             max-width: 85%; 
             width: 400px;
             z-index: 10;
-            transform: translateZ(20px);
-            animation: float 4s ease-in-out infinite, fadeIn 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: float 4s ease-in-out infinite;
         }
         h1 { 
             color: #ff69b4; 
             font-size: 2rem; 
             margin-top: 0;
             text-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
-            font-weight: 700;
         }
         p { 
             color: #f3e8ee; 
             line-height: 1.7; 
             font-size: 1.05rem; 
             text-align: justify;
-            margin-bottom: 25px;
         }
         .typing {
             display: inline-block;
@@ -62,20 +58,9 @@
             animation: blink 0.75s step-end infinite;
             white-space: pre-wrap;
         }
-        .footer-text {
-            font-size: 0.9rem;
-            color: #bfa3be;
-            font-style: italic;
-            letter-spacing: 0.5px;
-            text-shadow: 0 0 8px rgba(191, 163, 190, 0.3);
-        }
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(0.5deg); }
-        }
-        @keyframes fadeIn {
-            from { transform: scale(0.8) translateY(30px); opacity: 0; }
-            to { transform: scale(1) translateY(0); opacity: 1; }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
         @keyframes blink {
             from, to { border-color: transparent }
@@ -85,100 +70,62 @@
 </head>
 <body>
     <canvas id="fireworks"></canvas>
-
     <div class="box">
         <h1>Selamat Ulang Tahun, Fia! 🎂❤️</h1>
         <p><span id="text" class="typing"></span></p>
-        <div class="footer-text">~ Jarak cuma angka, sayangku luar biasa ~</div>
     </div>
-
     <script>
-        // Efek Animasi Ketik Teks Romantis
         const words = "Happy 00.00 buat kamu sayang! Meskipun malam ini kita terhalang jarak dan gak bisa ngerayain langsung bareng-bareng, aku harap doa-doa aku selalu nemenin kamu di sana. Makasih banyak ya udah bertahan sama aku sejauh ini. Semoga kamu makin bahagia, panjang umur, sehat selalu, dan apa yang kamu semogakan bisa terwujud secepatnya. I miss you so much! ✨";
         let index = 0;
         const textElement = document.getElementById('text');
-
         function type() {
             if (index < words.length) {
                 textElement.innerHTML += words.charAt(index);
                 index++;
-                setTimeout(type, 45); // Kecepatan ngetik
-            } else {
-                textElement.style.borderRight = "none"; // Hilangkan kursor kalau beres
+                setTimeout(type, 45);
             }
         }
-        setTimeout(type, 1000); // Mulai ngetik setelah 1 detik box muncul
+        setTimeout(type, 1000);
 
-        // Engine Kembang Api Otomatis & Halus
         const canvas = document.getElementById('fireworks');
         const ctx = canvas.getContext('2d');
         let particles = [];
-
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
         class Particle {
             constructor(x, y, color) {
-                this.x = x;
-                this.y = y;
-                this.color = color;
+                this.x = x; this.y = y; this.color = color;
                 this.radius = Math.random() * 2 + 1;
                 const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 6 + 2;
+                const speed = Math.random() * 5 + 2;
                 this.vx = Math.cos(angle) * speed;
                 this.vy = Math.sin(angle) * speed;
                 this.alpha = 1;
                 this.decay = Math.random() * 0.015 + 0.015;
             }
             draw() {
-                ctx.save();
-                ctx.globalAlpha = this.alpha;
-                ctx.beginPath();
+                ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
                 ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = this.color;
-                ctx.fill();
-                ctx.restore();
+                ctx.fillStyle = this.color; ctx.fill(); ctx.restore();
             }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                this.vy += 0.04; // Efek gravitasi ke bawah
-                this.alpha -= this.decay;
-            }
+            update() { this.x += this.vx; this.y += this.vy; this.vy += 0.04; this.alpha -= this.decay; }
         }
-
         function createFirework() {
             const x = Math.random() * canvas.width;
-            const y = Math.random() * (canvas.height * 0.6); // Meledak di bagian atas-tengah layar
-            const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#dda0dd', '#ba55d3', '#00ffff'];
+            const y = Math.random() * (canvas.height * 0.5);
+            const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#00ffff'];
             const color = colors[Math.floor(Math.random() * colors.length)];
-            
-            for (let i = 0; i < 60; i++) {
-                particles.push(new Particle(x, y, color));
-            }
+            for (let i = 0; i < 50; i++) { particles.push(new Particle(x, y, color)); }
         }
-
         function animate() {
-            ctx.fillStyle = 'rgba(10, 4, 19, 0.2)'; // Efek trail bayangan kembang api
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
+            ctx.fillStyle = 'rgba(10, 4, 19, 0.2)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
             particles = particles.filter(p => p.alpha > 0);
-            particles.forEach(p => {
-                p.update();
-                p.draw();
-            });
-            
+            particles.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animate);
         }
-
-        // Jalankan kembang api berkala
-        setInterval(createFirework, 800);
+        setInterval(createFirework, 900);
         animate();
     </script>
 </body>
