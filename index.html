@@ -3,130 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Fia! ❤️</title>
+    <title>Happy Birthday Fia 🎂</title>
     <style>
-        * { box-sizing: border-box; }
-        body { 
-            margin: 0; 
-            padding: 0;
-            background: radial-gradient(circle, #1a0b2e 0%, #0a0413 100%); 
-            text-align: center; 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            overflow: hidden;
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Georgia', serif;
+            color: #4a3e3d;
+            background-color: #fff9f9;
+            line-height: 1.8;
+            display: flex;
+            justify-content: center;
         }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
+
+        .container {
+            max-width: 650px;
             width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(243, 194, 194, 0.4);
+            border: 1px solid #ffe3e3;
         }
-        .box { 
-            background: rgba(255, 255, 255, 0.08); 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            padding: 40px 30px; 
-            border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5); 
-            max-width: 85%; 
-            width: 400px;
-            z-index: 10;
-            animation: float 4s ease-in-out infinite;
+
+        .cover-banner {
+            background-color: #ffe3e3;
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            margin-bottom: 35px;
+            border: 1px solid #ffd0d0;
         }
-        h1 { 
-            color: #ff69b4; 
-            font-size: 2rem; 
-            margin-top: 0;
-            text-shadow: 0 0 15px rgba(255, 105, 180, 0.6);
+
+        h1 {
+            font-family: 'Times New Roman', serif;
+            font-size: 28px;
+            color: #b35458;
+            margin: 0 0 10px 0;
+            font-weight: normal;
+            letter-spacing: 1px;
         }
-        p { 
-            color: #f3e8ee; 
-            line-height: 1.7; 
-            font-size: 1.05rem; 
+
+        .subtitle {
+            font-size: 14px;
+            color: #8c6b6d;
+            font-style: italic;
+            margin: 0;
+        }
+
+        p {
+            margin: 0 0 18px 0;
             text-align: justify;
+            text-indent: 20px;
         }
-        .typing {
-            display: inline-block;
-            border-right: 2px solid #ff69b4;
-            animation: blink 0.75s step-end infinite;
-            white-space: pre-wrap;
+
+        .no-indent {
+            text-indent: 0;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+
+        .section-title {
+            font-family: 'Times New Roman', serif;
+            font-size: 18px;
+            color: #b35458;
+            border-left: 3px solid #b35458;
+            padding-left: 12px;
+            margin: 35px 0 15px 0;
+            font-weight: bold;
         }
-        @keyframes blink {
-            from, to { border-color: transparent }
-            50% { border-color: #ff69b4; }
+
+        .highlight-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #b35458;
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            border-top: 1px dashed #ffd0d0;
+            border-bottom: 1px dashed #ffd0d0;
+            line-height: 1.6;
+            background-color: #fffafb;
+        }
+
+        .bullet-list {
+            margin: 0 0 25px 0;
+            padding-left: 20px;
+        }
+
+        .bullet-list li {
+            margin-bottom: 10px;
+            text-align: justify;
+            color: #5c4d4c;
+        }
+
+        .main-photo-container {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .main-photo {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 4px solid #ffffff;
+        }
+
+        .photo-grid {
+            display: flex;
+            gap: 15px;
+            margin: 25px 0;
+            justify-content: center;
+        }
+
+        .grid-photo {
+            width: 48%;
+            max-width: 250px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 3px solid #ffffff;
+            object-fit: cover;
+        }
+
+        .heart {
+            color: #b35458;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 15px;
+            color: #b35458;
+            font-style: italic;
+            border-top: 1px solid #ffe3e3;
+            padding-top: 30px;
+            line-height: 1.8;
+        }
+
+        .footer strong {
+            font-size: 16px;
+            display: block;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <canvas id="fireworks"></canvas>
-    <div class="box">
-        <h1>Selamat Ulang Tahun, Fia! 🎂❤️</h1>
-        <p><span id="text" class="typing"></span></p>
+
+    <div class="container">
+        
+        <div class="cover-banner">
+            <h1>Happy Birthday, Fia 🎂</h1>
+            <div class="subtitle">Sebuah catatan kecil spesial untuk hari spesialmu</div>
+        </div>
+
+        <p class="no-indent">Haiii, selamat ulang tahun yaa, cantik. <span class="heart">🤍</span></p>
+        
+        <p>Asli ya, aku sempet mikir lama banget mau ngasih apa buat kamu. Mau ngasih hadiah biasa rasanya kurang. Mau cuma ngucapin lewat chat juga terlalu sederhana.</p>
+        
+        <p>Jadi... akhirnya aku bikin ini. Kalau sekarang kamu lagi baca ini, berarti misiku berhasil. 😎</p>
+
+        <!-- FOTO UTAMA (Foto Kebaya) -->
+        <div class="main-photo-container">
+            <img class="main-photo" src="IMG-20260619-WA0061.jpg" alt="Fia Cantik">
+        </div>
+
+        <div class="section-title">Selamat Bertambah Usia</div>
+        <p>Selamat bertambah usia yaa. Selamat bertambah dewasa. Selamat bertambah kuat.</p>
+        <p>Semoga di umur yang baru ini, hal-hal baik mulai lebih sering dateng ke hidup kamu. Yang bikin sedih semoga pelan-pelan pergi. Yang bikin capek semoga diganti sama banyak alasan buat ketawa lagi.</p>
+        <p>Aku tau kok, nggak semua hari yang kamu jalanin itu mudah. Kadang kamu capek. Kadang kamu kesel. Kadang kamu pengen nyerah sama semuanya. Tapi hebatnya... kamu selalu bisa bangun lagi. Dan itu salah satu hal yang bikin aku kagum sama kamu.</p>
+
+        <div class="section-title">Ungkapan Terima Kasih & Maaf</div>
+        <p>Sekarang aku mau jujur dikit ya. Makasih. Sesimpel itu. Makasih udah hadir di hidup aku. Makasih udah jadi orang yang selalu berhasil bikin hari biasa jadi lebih seru. Makasih udah mau dengerin cerita-cerita random aku. Makasih udah sabar sama sifat aku yang kadang ngeselin, kadang nyebelin, kadang bikin emosi... ya walaupun aku tetep merasa aku lucu. 😌 Kalau ada penghargaan buat orang paling sabar, kayaknya kamu udah menang dari dulu.</p>
+        
+        <p>Aku juga mau minta maaf. Kalau selama ini masih sering bikin kamu kepikiran. Masih sering bikin kamu nunggu. Masih sering bikin kamu kesel. Atau belum bisa jadi orang yang selalu ada setiap saat.</p>
+        
+        <div class="highlight-text">
+            "Tapi satu hal yang pengen kamu tau... Perasaan aku ke kamu nggak pernah dibuat main-main. Aku serius. Serius pengen lihat kamu bahagia. Serius pengen lihat kamu senyum terus. Dan serius bersyukur karena Tuhan mempertemukan aku sama orang sebaik kamu."
+        </div>
+
+        <div class="section-title">Momen Tentang Kamu</div>
+        <p class="no-indent">Sekarang coba lihat foto-foto yang ada di halaman ini. Cantik, kan? ...iya tau, gausah geer. Tapi emang cantik kok. 😌</p>
+        <p class="no-indent">Aku suka cara kamu senyum. Aku suka cara kamu ngobrol. Aku suka cara kamu jadi diri sendiri. Dan entah kenapa... Semua hal kecil tentang kamu selalu berhasil bikin aku nyaman.</p>
+
+        <!-- FOTO GALERI KECIL (Foto Seragam Sekolah & Foto Hijab Cokelat) -->
+        <div class="photo-grid">
+            <img class="grid-photo" src="IMG-20260619-WA0062.jpg" alt="Momen Fia">
+            <img class="grid-photo" src="IMG-20260628-WA0029.jpg" alt="Senyum Fia">
+        </div>
+
+        <div class="section-title">Doa & Harapan</div>
+        <p class="no-indent">Di umur kamu yang sekarang... Aku nggak berharap kamu jadi orang yang sempurna. Aku cuma berharap...</p>
+        <ul class="bullet-list">
+            <li>Semoga kamu selalu sehat.</li>
+            <li>Semoga semua doa yang kamu simpan diam-diam satu per satu dikabulkan.</li>
+            <li>Semoga cita-cita yang lagi kamu perjuangin tercapai.</li>
+            <li>Semoga keluarga kamu selalu diberi kebahagiaan.</li>
+            <li>Semoga kamu selalu dipertemukan sama orang-orang yang tulus.</li>
+            <li>Dan... Semoga kamu nggak pernah kehilangan alasan buat tersenyum.</li>
+        </ul>
+
+        <p>Kalau suatu hari nanti kamu lagi sedih... Atau lagi ngerasa sendirian... Aku cuma mau kamu inget satu hal. Masih ada seseorang yang selalu percaya sama kamu. Seseorang yang bakal selalu dukung kamu dari dekat ataupun dari jauh. Dan orang itu... Ya... aku. <span class="heart">🤍</span></p>
+
+        <p>Terakhir... Terima kasih ya. Terima kasih udah lahir ke dunia ini. Karena kalau kamu nggak lahir... Mungkin aku nggak akan pernah kenal sama orang seindah kamu.</p>
+
+        <div class="footer">
+            Sekali lagi... Happy Birthday, Fia. 🎂<span class="heart">🤍</span><br>
+            Semoga umur yang baru ini membawa lebih banyak tawa daripada air mata.<br>
+            Lebih banyak kebahagiaan daripada kesedihan.<br>
+            Lebih banyak mimpi yang tercapai daripada yang tertunda.<br><br>
+            Dan semoga... Kalau nanti suatu saat kamu baca halaman ini lagi...<br>
+            Kamu masih bisa senyum sambil bilang,<br>
+            <strong>"Untung ya... waktu itu dia bikin ini buat aku." ❤️</strong><br><br>
+            <strong>Happy Birthday, Sayang. I love you, always. 🤍✨</strong>
+        </div>
+
     </div>
-    <script>
-        const words = "Happy 00.00 buat kamu sayang! Meskipun malam ini kita terhalang jarak dan gak bisa ngerayain langsung bareng-bareng, aku harap doa-doa aku selalu nemenin kamu di sana. Makasih banyak ya udah bertahan sama aku sejauh ini. Semoga kamu makin bahagia, panjang umur, sehat selalu, dan apa yang kamu semogakan bisa terwujud secepatnya. I miss you so much! ✨";
-        let index = 0;
-        const textElement = document.getElementById('text');
-        function type() {
-            if (index < words.length) {
-                textElement.innerHTML += words.charAt(index);
-                index++;
-                setTimeout(type, 45);
-            }
-        }
-        setTimeout(type, 1000);
 
-        const canvas = document.getElementById('fireworks');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
-        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        class Particle {
-            constructor(x, y, color) {
-                this.x = x; this.y = y; this.color = color;
-                this.radius = Math.random() * 2 + 1;
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 5 + 2;
-                this.vx = Math.cos(angle) * speed;
-                this.vy = Math.sin(angle) * speed;
-                this.alpha = 1;
-                this.decay = Math.random() * 0.015 + 0.015;
-            }
-            draw() {
-                ctx.save(); ctx.globalAlpha = this.alpha; ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color; ctx.fill(); ctx.restore();
-            }
-            update() { this.x += this.vx; this.y += this.vy; this.vy += 0.04; this.alpha -= this.decay; }
-        }
-        function createFirework() {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * (canvas.height * 0.5);
-            const colors = ['#ff69b4', '#ff1493', '#ff85a2', '#00ffff'];
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            for (let i = 0; i < 50; i++) { particles.push(new Particle(x, y, color)); }
-        }
-        function animate() {
-            ctx.fillStyle = 'rgba(10, 4, 19, 0.2)'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-            particles = particles.filter(p => p.alpha > 0);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animate);
-        }
-        setInterval(createFirework, 900);
-        animate();
-    </script>
 </body>
 </html>
